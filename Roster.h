@@ -10,9 +10,9 @@ class Roster {
         void Add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree);
         void Remove();
         void PrintAll();
-        void PrintAverageDaysInClass();
+        void PrintAverageDaysInClass(string studentID);
         void PrintInvalidEmails();
-        void PrintByDegreeProgram();
+        void PrintByDegreeProgram(Degree degree);
     private:
         Student* classRosterArray[5];
 };

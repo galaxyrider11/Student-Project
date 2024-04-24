@@ -51,20 +51,35 @@ void Student::SetNumCourseDays(int courseDays1, int courseDays2, int courseDays3
     this->numCourseDays[2] = courseDays3;
 }
 
+int Student::GetCourseDays1() {
+	return this->numCourseDays[0];
+}
+
+int Student::GetCourseDays2() {
+	return this->numCourseDays[1];
+}
+
+int Student::GetCourseDays3() {
+	return this->numCourseDays[2];
+}
+
 string Student::GetNumCourseDays() {
-    string returnString = "[";
-
-    returnString += to_string(numCourseDays[0]) + ",";
-    returnString += to_string(numCourseDays[1]) + ",";
-    returnString += to_string(numCourseDays[2]);
-    returnString = returnString + "]";
-
-    return returnString;
+	string returnString = "[";
+	
+	returnString += to_string(this->GetCourseDays1()) + ",";
+	returnString += to_string(this->GetCourseDays2()) + ",";
+	returnString += to_string(this->GetCourseDays3()) + "]";
+	
+	return returnString;
 }
 
 string Student::GetDegree() {
     //Converts the enumerated data type to a string since we can only access its index normally
-    return degreeProgram == 0 ? "SECURITY" : ( degreeProgram == 1 ? "NETWORK" : "SOFTWARE" );
+	switch(degreeProgram) {
+		case 0: return "SECURITY";
+		case 1: return "NETWORK";
+		case 2: return "SOFTWARE";
+	}
 }
 
 void Student::SetStudentID(string studentID) {

@@ -14,7 +14,10 @@ class Student {
         string GetLastName();
         string GetStudentEmail();
         int GetStudentAge();
-        string GetNumCourseDays();
+        int GetCourseDays1();
+		int GetCourseDays2();
+		int GetCourseDays3();
+		string GetNumCourseDays();
         string GetDegree();
         void SetStudentID(string studentID);
         void SetFirstName(string newFirstName);

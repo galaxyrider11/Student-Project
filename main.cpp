@@ -4,6 +4,13 @@
 #include <iostream>
 using namespace std;
 
+void PrintHeader() {
+	cout << "C867-Scripting & Programming: Applications" << endl;
+	cout << "Language: C++" << endl;
+	cout << "Student ID: " << endl;
+	cout << "Name: Brandon Owen" << endl << endl;
+}
+
 int main() {
     string studentData[5] = {
         "A1,John,Smith,John1989@gm ail.com,20,30,35,40,SECURITY",
@@ -11,15 +18,33 @@ int main() {
         "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
         "A5,Brandon,Owen,bowe208@wgu.edu,31,10,12,15,SOFTWARE"};
-
-    //Student testStudent1("1234", "Bob", "Jones", "gay@gay.com", 25, 1, 2, 3, NETWORK);
-    //Student testStudent2;
-
-    Roster studentRoster(studentData); 
-    studentRoster.PrintAll();
-
-    //testStudent1.Print();
-    //testStudent2.Print();
+	
+	//Initialize the array of pointers for the student objects
+    Roster studentRoster(studentData);
+	
+	PrintHeader();
+	
+	cout << "Displaying all students:" << endl;
+	studentRoster.PrintAll();
+	cout << endl;
+	
+	cout << "Displaying invalid emails:" << endl;
+	studentRoster.PrintInvalidEmails();
+	cout << endl;
+	
+	cout << "Displaying average days in course:" << endl;
+	studentRoster.PrintAverageDaysInClass("A1");
+	studentRoster.PrintAverageDaysInClass("A2");
+	studentRoster.PrintAverageDaysInClass("A3");
+	studentRoster.PrintAverageDaysInClass("A4");
+	studentRoster.PrintAverageDaysInClass("A5");
+	cout << endl;
+	
+	cout << "Showing students in degree program: SOFTWARE" << endl;
+	studentRoster.PrintByDegreeProgram(SOFTWARE);
+	cout << endl;
+	
+	cout << "Removing A3:" << endl;
 
     return 0;
 }

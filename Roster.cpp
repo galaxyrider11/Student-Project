@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <regex>
 #include "Roster.h"
 #include "Student.h"
 using namespace std;
@@ -65,14 +66,40 @@ void Roster::PrintAll() {
     }
 }
 
-void Roster::PrintAverageDaysInClass() {
-
+void Roster::PrintAverageDaysInClass(string studentID) {
+	int average;
+	
+	for(int i = 0; i < 5; ++i) {
+		if(classRosterArray[i]->GetStudentID() == studentID) {
+			int day1 = classRosterArray[i]->GetCourseDays1();
+			int day2 = classRosterArray[i]->GetCourseDays2();
+			int day3 = classRosterArray[i]->GetCourseDays3();
+			average = (day1 + day2 + day3) / 3;
+			
+			cout << "Student ID: " << classRosterArray[i]->GetStudentID() << ", averagde days in course is: ";
+			cout << average << endl;
+		}
+	}
 }
 
 void Roster::PrintInvalidEmails() {
-
+	regex pattern("(\\w*\\W*\\.?\\w*\\W*@\\w*\\W*\\.\\w*)");
+	
+	for(int i = 0; i < 5; ++i) {
+		string email = classRosterArray[i]->GetStudentEmail();
+		
+		if(!regex_match(email, pattern)) {
+			cout << email << "\t : invalid" << endl;
+		}
+	}
 }
 
-void Roster::PrintByDegreeProgram() {
-    
+void Roster::PrintByDegreeProgram(Degree degree) {
+	string degreeString = (degree == 0 ? "SECURITY" : ( degree == 1 ? "NETWORK" : "SOFTWARE" ));
+	
+	for(int i = 0; i < 5; ++i) {
+		if(classRosterArray[i]->GetDegree() == degreeString) {
+			classRosterArray[i]->Print();
+		}
+	}
 }
