@@ -9,6 +9,7 @@ class Student {
     public:
         Student();
         Student(string studentID, string firstName, string lastName, string studentEmail, int studentAge, int courseDays1, int courseDays2, int courseDays3, Degree degreeProgram);
+		~Student();
         string GetStudentID();
         string GetFirstName();
         string GetLastName();

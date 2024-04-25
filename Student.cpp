@@ -25,6 +25,10 @@ Student::Student(string studentID, string firstName, string lastName, string stu
     this->degreeProgram = degreeProgram;
 }
 
+Student::~Student() {
+	
+}
+
 string Student::GetStudentID() {
     return studentID;
 }

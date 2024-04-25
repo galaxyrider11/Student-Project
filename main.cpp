@@ -45,6 +45,15 @@ int main() {
 	cout << endl;
 	
 	cout << "Removing A3:" << endl;
+	studentRoster.Remove("A3");
+	studentRoster.PrintAll();
+	cout << endl;
+	
+	cout << "Removing A3 again:" << endl;
+	studentRoster.Remove("A3");
+	cout << endl;
+	
+	cout << "DONE" << endl;
 
     return 0;
 }

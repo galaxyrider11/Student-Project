@@ -13,8 +13,15 @@ Roster::Roster(string studentData[5]) {
     classRosterArray[2] = new Student();
     classRosterArray[3] = new Student();
     classRosterArray[4] = new Student();
-
+	
+	//Divides the size (in bytes) of the array by the number of bytes in each student object
+	//This gives us the number of indexes in the array which we use for array iteration later
+	rosterSize = sizeof(classRosterArray) / sizeof(Student*);
+	
     ParseData(studentData);
+}
+
+Roster::~Roster() {
 }
 
 void Roster::ParseData(string studentData[5]) {
@@ -25,7 +32,8 @@ void Roster::ParseData(string studentData[5]) {
     int j;
 
     //Extracts each piece of data of the comma-separated list provided in main.cpp
-    for(int i = 0; i < 5; ++i) {
+	//and saves each part in the string array temp[]
+    for(int i = 0; i < rosterSize; ++i) {
         stringstream ss(studentData[i]);
 
         j = 0;
@@ -36,9 +44,10 @@ void Roster::ParseData(string studentData[5]) {
         }
 
         //Converts the enum data type to a string so it can be sent to the Add method
-        tempDegree = temp[8] == "SECURITY" ? SECURITY : ( temp[8] == "NETWORK" ? NETWORK : SOFTWARE );
+        tempDegree = (temp[8] == "SECURITY" ? SECURITY : ( temp[8] == "NETWORK" ? NETWORK : SOFTWARE));
         //
-        Add(temp[0], temp[1], temp[2], temp[3], stoi(temp[4]), stoi(temp[5]), stoi(temp[6]), stoi(temp[7]), tempDegree);
+        Add(temp[0], temp[1], temp[2], temp[3], stoi(temp[4]),
+			stoi(temp[5]), stoi(temp[6]), stoi(temp[7]), tempDegree);
     }
 }
 
@@ -56,27 +65,43 @@ void Roster::Add(string studentID, string firstName, string lastName, string ema
     classRosterArray[index-1]->SetDegree(degree);
 }
 
-void Roster::Remove() {
-    
+void Roster::Remove(string studentID) {
+	bool found = false;
+	
+	for(int i = 0; i < rosterSize; i++) {
+		if(classRosterArray[i] != NULL && classRosterArray[i]->GetStudentID() == studentID) {
+			classRosterArray[i]->~Student();
+			classRosterArray[i] = nullptr;
+			delete classRosterArray[i];
+			found = true;
+		}
+	}
+	
+	if(!found) {
+		cout << "The student with ID " << studentID << " was not found." << endl;
+	}
 }
 
 void Roster::PrintAll() {
-    for (int i = 0; i < 5; ++i) {
-        classRosterArray[i]->Print();
+	//Prints every
+    for (Student* student : classRosterArray) {
+		if(student != NULL) {
+			student->Print();
+		}
     }
 }
 
 void Roster::PrintAverageDaysInClass(string studentID) {
 	int average;
 	
-	for(int i = 0; i < 5; ++i) {
-		if(classRosterArray[i]->GetStudentID() == studentID) {
-			int day1 = classRosterArray[i]->GetCourseDays1();
-			int day2 = classRosterArray[i]->GetCourseDays2();
-			int day3 = classRosterArray[i]->GetCourseDays3();
+	for(Student* student : classRosterArray) {
+		if(student->GetStudentID() == studentID) {
+			int day1 = student->GetCourseDays1();
+			int day2 = student->GetCourseDays2();
+			int day3 = student->GetCourseDays3();
 			average = (day1 + day2 + day3) / 3;
 			
-			cout << "Student ID: " << classRosterArray[i]->GetStudentID() << ", averagde days in course is: ";
+			cout << "Student ID: " << student->GetStudentID() << ", averagde days in course is: ";
 			cout << average << endl;
 		}
 	}
@@ -85,8 +110,8 @@ void Roster::PrintAverageDaysInClass(string studentID) {
 void Roster::PrintInvalidEmails() {
 	regex pattern("(\\w*\\W*\\.?\\w*\\W*@\\w*\\W*\\.\\w*)");
 	
-	for(int i = 0; i < 5; ++i) {
-		string email = classRosterArray[i]->GetStudentEmail();
+	for(Student* student : classRosterArray) {
+		string email = student->GetStudentEmail();
 		
 		if(!regex_match(email, pattern)) {
 			cout << email << "\t : invalid" << endl;
@@ -97,9 +122,9 @@ void Roster::PrintInvalidEmails() {
 void Roster::PrintByDegreeProgram(Degree degree) {
 	string degreeString = (degree == 0 ? "SECURITY" : ( degree == 1 ? "NETWORK" : "SOFTWARE" ));
 	
-	for(int i = 0; i < 5; ++i) {
-		if(classRosterArray[i]->GetDegree() == degreeString) {
-			classRosterArray[i]->Print();
+	for(Student* student : classRosterArray) {
+		if(student->GetDegree() == degreeString) {
+			student->Print();
 		}
 	}
 }
