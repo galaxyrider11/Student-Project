@@ -1,3 +1,14 @@
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|	Author:	Brandon Owen													|
+|	Date:	04/20/24														|
+|	File:	Student.h														|
+|	Class:	C867 Scripting and Programming - Applications					|
+|	Use:	Stores, modifies, and prints student objects stored in			|
+|			an array of pointers. There are 6 files total for this			|
+|			project.														|
+|			This file is the header file for the Student class and			|
+|			holds the constructor and destructor for that class				|
+\+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 #ifndef STUDENT_H
 #define STUDENT_H
 #include "Degree.h"

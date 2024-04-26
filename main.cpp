@@ -1,3 +1,17 @@
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|	Author:	Brandon Owen													|
+|	Date:	04/20/24														|
+|	File:	main.cpp														|
+|	Class:	C867 Scripting and Programming - Applications					|
+|	Use:	Stores, modifies, and prints student objects stored in			|
+|			an array of pointers. There are 6 files total for this			|
+|			project.														|
+|			Student.cpp and Student.h form the Student class.				|
+|			Roster.cpp and Roster.h form the Roster class.					|
+|			Degree.h stores the custome enum data type for degrees.			|
+|																			|
+|	Run:	g++ -std=c++11 main.cpp Student.cpp Roster.cpp -o main			|
+\+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 #include "Student.h"
 #include "Degree.h"
 #include "Roster.h"

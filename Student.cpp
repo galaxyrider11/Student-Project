@@ -1,3 +1,14 @@
+/*-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+\
+|	Author:	Brandon Owen													|
+|	Date:	04/20/24														|
+|	File:	Student.cpp														|
+|	Class:	C867 Scripting and Programming - Applications					|
+|	Use:	Stores, modifies, and prints student objects stored in			|
+|			an array of pointers. There are 6 files total for this			|
+|			project.														|
+|			This file is the implementation file for the Student class		|
+|			and holds all the functions and data for that class				|
+\+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-*/
 #include <iostream>
 #include <string>
 #include <cstdio>
