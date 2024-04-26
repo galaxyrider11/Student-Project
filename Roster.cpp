@@ -17,6 +17,10 @@
 #include "Student.h"
 using namespace std;
 
+//---------------------------------------------------------------------------
+//			Constructor for the Roster class
+//				Takes an array of comma separated strings as input
+//---------------------------------------------------------------------------
 Roster::Roster(string studentData[5]) {
     //Assigns each index of the classRosterArray with the address of a unique Student object
     classRosterArray[0] = new Student();
@@ -32,9 +36,19 @@ Roster::Roster(string studentData[5]) {
     ParseData(studentData);
 }
 
+//---------------------------------------------------------------------------
+//			Destructor for the Roster class
+//---------------------------------------------------------------------------
 Roster::~Roster() {
+	
 }
 
+//---------------------------------------------------------------------------
+//			ParsData() function
+//				Takes an array of comma separated strings as input
+//				Separates the values into individual strings and ints
+//				These are sent to the Add function to be added to the roster
+//---------------------------------------------------------------------------
 void Roster::ParseData(string studentData[5]) {
     char delimiter = ',';
     Degree tempDegree;
@@ -56,12 +70,17 @@ void Roster::ParseData(string studentData[5]) {
 
         //Converts the enum data type to a string so it can be sent to the Add method
         tempDegree = (temp[8] == "SECURITY" ? SECURITY : ( temp[8] == "NETWORK" ? NETWORK : SOFTWARE));
-        //
+        //Sends the pieces of data extracted from the stringstream to be added to the Student Roster
         Add(temp[0], temp[1], temp[2], temp[3], stoi(temp[4]),
 			stoi(temp[5]), stoi(temp[6]), stoi(temp[7]), tempDegree);
     }
 }
 
+//---------------------------------------------------------------------------
+//			Add() function
+//				Takes a collections of strings and ints as input
+//				Those values are then set for the Student object
+//---------------------------------------------------------------------------
 void Roster::Add(string studentID, string firstName, string lastName, string emailAddress, int age, int daysInCourse1, int daysInCourse2, int daysInCourse3, Degree degree) {
     //Extracts the index of the pointer array it needs to modify from the student ID number
     int index = stoi(studentID.substr(1,1));
@@ -76,10 +95,16 @@ void Roster::Add(string studentID, string firstName, string lastName, string ema
     classRosterArray[index-1]->SetDegree(degree);
 }
 
+//---------------------------------------------------------------------------
+//			Remove() function
+//				Takes a Student ID as a string input
+//				Removes the Student object that matches that ID
+//---------------------------------------------------------------------------
 void Roster::Remove(string studentID) {
 	bool found = false;
 	
 	for(int i = 0; i < rosterSize; i++) {
+		//Only deletes the Student object if it isn't already NULL
 		if(classRosterArray[i] != NULL && classRosterArray[i]->GetStudentID() == studentID) {
 			classRosterArray[i]->~Student();
 			classRosterArray[i] = nullptr;
@@ -93,6 +118,11 @@ void Roster::Remove(string studentID) {
 	}
 }
 
+//---------------------------------------------------------------------------
+//			PrintAll() function
+//				Takes no input
+//				Calls the Print() function of every Student object
+//---------------------------------------------------------------------------
 void Roster::PrintAll() {
 	//Prints every student object that isn't null
     for (Student* student : classRosterArray) {
@@ -102,6 +132,12 @@ void Roster::PrintAll() {
     }
 }
 
+//---------------------------------------------------------------------------
+//			PrintAverageDaysInClass() function
+//				Takes a Student ID as a string input
+//				Calcuates the average days for that student
+//				Prints that average to standard out
+//---------------------------------------------------------------------------
 void Roster::PrintAverageDaysInClass(string studentID) {
 	int average;
 	
@@ -121,6 +157,12 @@ void Roster::PrintAverageDaysInClass(string studentID) {
 	}
 }
 
+//---------------------------------------------------------------------------
+//			PrintInvalidEmails() function
+//				Takes no input
+//				Uses regex to determine if Student emails are valid
+//				Prints invalid emails to standard out
+//---------------------------------------------------------------------------
 void Roster::PrintInvalidEmails() {
 	//Creates a pattern x@x.x to compare with the email addresses
 	//The characters on either side of the @ can contain letters, numbers, and symbols
@@ -136,6 +178,11 @@ void Roster::PrintInvalidEmails() {
 	}
 }
 
+//---------------------------------------------------------------------------
+//			PrintByDegreeProgram() function
+//				Takes an enum Degree input
+//				Prints Students with that degree to standard out
+//---------------------------------------------------------------------------
 void Roster::PrintByDegreeProgram(Degree degree) {
 	string degreeString;
 	
