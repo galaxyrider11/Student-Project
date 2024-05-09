@@ -6,12 +6,28 @@
 	objectVersion = 56;
 	objects = {
 
+/* Begin PBXFileReference section */
+		5A102C292BD945B8002A7979 /* Roster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Roster.cpp; sourceTree = "<group>"; };
+		5A102C2A2BD945B8002A7979 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5A102C2B2BD945B8002A7979 /* Roster.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Roster.h; sourceTree = "<group>"; };
+		5A102C2C2BD945B8002A7979 /* Student.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Student.cpp; sourceTree = "<group>"; };
+		5A102C2D2BD945B8002A7979 /* Degree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Degree.h; sourceTree = "<group>"; };
+		5A102C2E2BD945B8002A7979 /* Student.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		5A102C222BD94505002A7979 = {
 			isa = PBXGroup;
 			children = (
+				5A102C2D2BD945B8002A7979 /* Degree.h */,
+				5A102C2A2BD945B8002A7979 /* main.cpp */,
+				5A102C292BD945B8002A7979 /* Roster.cpp */,
+				5A102C2B2BD945B8002A7979 /* Roster.h */,
+				5A102C2C2BD945B8002A7979 /* Student.cpp */,
+				5A102C2E2BD945B8002A7979 /* Student.h */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 /* End PBXGroup section */
 

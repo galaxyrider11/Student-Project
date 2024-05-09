@@ -151,7 +151,7 @@ void Roster::PrintAverageDaysInClass(string studentID) {
 			//Actual average calculation
 			average = (day1 + day2 + day3) / 3;
 			
-			cout << "Student ID: " << student->GetStudentID() << ", averagde days in course is: ";
+			cout << "Student ID: " << student->GetStudentID() << ", average days in course is: ";
 			cout << average << endl;
 		}
 	}

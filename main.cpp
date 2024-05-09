@@ -21,7 +21,7 @@ using namespace std;
 void PrintHeader() {
 	cout << "C867-Scripting & Programming: Applications" << endl;
 	cout << "Language: C++" << endl;
-	cout << "Student ID: " << endl;
+	cout << "Student ID: 012098634" << endl;
 	cout << "Name: Brandon Owen" << endl << endl;
 }
 
